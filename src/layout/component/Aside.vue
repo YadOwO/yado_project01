@@ -5,7 +5,12 @@
       class="el-menu-vertical-demo ul-box"
       @open="handleOpen"
       @close="handleClose">
-      <el-menu-item index="2">
+      <el-menu-item index="2" @click="goWhere({
+        path: '/layout/home',
+        query: {
+          id: 1
+        }
+      })">
           <i class="el-icon-s-home"></i>
         <span slot="title">首页</span>
       </el-menu-item>
@@ -55,6 +60,10 @@ export default {
       },
       handleClose(key, keyPath) {
         console.log(key, keyPath);
+      },
+      goWhere(route){
+        console.log(route,this);
+        if(this.$route.fullpath !== route.path) this.$router.push(route)
       }
     }
   }

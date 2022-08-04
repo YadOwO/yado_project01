@@ -2,9 +2,9 @@
   <div class="container">
         <h1>宿舍管理系统</h1>
         <div class="form">
-            <input type="text" placeholder="您的账号">
-            <input type="password" placeholder="您的密码">
-            <button class="btn-login">登录</button>
+            <input type="text" placeholder="您的账号" v-model="userName">
+            <input type="password" placeholder="您的密码" v-model="passWord">
+            <button class="btn-login" @click="loginHandler">登录</button>
         </div>
         
     </div>
@@ -13,6 +13,26 @@
 <script>
 export default {
     name:'Login',
+    data() {
+        return {
+            userName:'',
+            passWord:'',
+        }
+    },
+    methods:{
+        loginHandler(){
+            if(!this.userName||!this.passWord) {
+                this.$message.error('账号或密码为空！')
+                return
+            }
+            if(this.userName !== 'admin' || this.passWord !== '123') {
+                this.$message.error('账号或密码错误！')
+                return
+            }
+            sessionStorage.setItem('token', '123')
+            this.$router.replace('/')
+        }
+    }
 }
 </script>
 

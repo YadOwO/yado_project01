@@ -6,7 +6,7 @@
       <span class="title-header">宿舍管理系统 </span>
       <User/>
     </el-header>
-    <el-main>Main</el-main>
+    <el-main><router-view></router-view></el-main>
   </el-container>
 </el-container>
 </template>
