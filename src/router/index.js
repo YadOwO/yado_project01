@@ -20,7 +20,7 @@ export default new VueRouter({
 			// 		path:'home',
 			// 		comments:Home
 			// 	}
-			// ]
+			// ] 
 		}
 	]
 })
