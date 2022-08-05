@@ -25,10 +25,12 @@ export default {
                 this.$message.error('账号或密码为空！')
                 return
             }
+            //用户名为'admin',密码为'123'
             if(this.userName !== 'admin' || this.passWord !== '123') {
                 this.$message.error('账号或密码错误！')
                 return
             }
+            //向浏览器中加入token，用于后面的路由守卫验证登录
             sessionStorage.setItem('token', '123')
             this.$router.replace('/')
         }
