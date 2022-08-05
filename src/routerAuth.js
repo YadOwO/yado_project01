@@ -1,5 +1,5 @@
 
-export default function install(router) { 
+export default function routerAuth(router) { 
     router.beforeEach((to, from, next) => {
         console.log(to)
         const token = sessionStorage.getItem('token')
