@@ -1,6 +1,6 @@
 export default function routerAuth(router) { 
     router.beforeEach((to, from, next) => {
-        console.log(to)
+        // console.log(to)
         const token = sessionStorage.getItem('token')
         if (token || to.path === '/login') {
             next();

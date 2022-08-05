@@ -6,15 +6,14 @@
       @open="handleOpen"
       @close="handleClose">
       <el-menu-item index="2" @click="goWhere({
-        path: '/layout/home',
-        query: {
-          id: 1
-        }
+        path: '/layout/home'
       })">
           <i class="el-icon-s-home"></i>
         <span slot="title">首页</span>
       </el-menu-item>
-      <el-menu-item index="3">
+      <el-menu-item index="3" @click="goWhere({
+        path: '/layout/dormitory'
+      })">
         <i class="el-icon-document"></i>
         <span slot="title">宿舍查看</span>
       </el-menu-item>
@@ -25,11 +24,11 @@
         </template>
         <el-menu-item-group>
           <template slot="title">电费管理</template>
-          <el-menu-item index="1-1">照明电费</el-menu-item>
-          <el-menu-item index="1-2">空调电费</el-menu-item>
+          <el-menu-item index="1-1" @click="goWhere({path: '/layout/light'})">照明电费</el-menu-item>
+          <el-menu-item index="1-2" @click="goWhere({path: '/layout/kongtiao'})">空调电费</el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="水费管理">
-          <el-menu-item index="1-3">缴纳水费</el-menu-item>
+          <el-menu-item index="1-3" @click="goWhere({path: '/layout/water'})">缴纳水费</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="5">
@@ -39,11 +38,11 @@
         </template>
         <el-menu-item-group>
           <template slot="title">报修管理</template>
-          <el-menu-item index="1-1">报修列表</el-menu-item>
-          <el-menu-item index="1-2">申请报修</el-menu-item>
+          <el-menu-item index="1-1" @click="goWhere({path: '/layout/fixList'})">报修列表</el-menu-item>
+          <el-menu-item index="1-2" @click="goWhere({path: '/layout/fixSub'})">申请报修</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-      <el-menu-item index="4">
+      <el-menu-item index="4"  @click="goWhere({path: '/layout/person'})">
         <i class="el-icon-user-solid"></i>
         <span slot="title">人员管理</span>
       </el-menu-item>
@@ -56,13 +55,13 @@ export default {
     name:'Aside',
     methods: {
       handleOpen(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
       },
       handleClose(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
       },
       goWhere(route){
-        console.log(route,this);
+        // console.log(route,this);
         if(this.$route.fullpath !== route.path) this.$router.push(route)
       }
     }
