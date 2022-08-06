@@ -20,7 +20,7 @@
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-s-opportunity"></i>
-          <span>水电管理</span>
+          <span>水电缴纳</span>
         </template>
         <el-menu-item-group>
           <template slot="title">电费管理</template>
@@ -38,11 +38,11 @@
         </template>
         <el-menu-item-group>
           <template slot="title">报修管理</template>
-          <el-menu-item index="1-1" @click="goWhere({path: '/layout/fixList'})">报修列表</el-menu-item>
+          <el-menu-item index="1-1" @click="goWhere({path: '/layout/fixList'})" :disabled="isDisabled">报修列表</el-menu-item>
           <el-menu-item index="1-2" @click="goWhere({path: '/layout/fixSub'})">申请报修</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-      <el-menu-item index="4"  @click="goWhere({path: '/layout/person'})">
+      <el-menu-item index="4" :disabled="isDisabled"  @click="goWhere({path: '/layout/person'})">
         <i class="el-icon-user-solid"></i>
         <span slot="title">人员管理</span>
       </el-menu-item>
@@ -53,6 +53,11 @@
 <script>
 export default {
     name:'Aside',
+    data() {
+      return {
+        isDisabled:'',
+      }
+    },
     methods: {
       handleOpen(key, keyPath) {
         // console.log(key, keyPath);
@@ -64,6 +69,10 @@ export default {
         // console.log(route,this);
         if(this.$route.fullpath !== route.path) this.$router.push(route)
       }
+    },
+    mounted(){
+      //判断权限
+      this.isDisabled = sessionStorage.getItem('token') === 'student' ? true : false
     }
   }
 </script>

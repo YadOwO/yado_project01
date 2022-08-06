@@ -7,14 +7,19 @@ import 'element-ui/lib/theme-chalk/index.css';
 import routerAuth from './routerAuth'
 //引入路由器
 import router from './router'
+//引入Store
+import store from './store'
 
 
 Vue.config.productionTip = false
+
 Vue.use(ElementUI);
+
 routerAuth(router)
 
 
 new Vue({
   render: h => h(App),
   router,
+  store,
 }).$mount('#app')

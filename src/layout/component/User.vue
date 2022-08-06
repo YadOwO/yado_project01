@@ -1,18 +1,24 @@
 <template>
-    <el-dropdown trigger="click" class="user-box">
-      <span class="el-dropdown-link">
-        User下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
-      </span>
-      <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item icon="el-icon-user-solid">个人中心</el-dropdown-item>
-        <el-dropdown-item icon="el-icon-back">退出登录</el-dropdown-item>
-      </el-dropdown-menu>
-    </el-dropdown>
+    <el-dropdown :hide-on-click="false" class="user-box">
+  <span class="el-dropdown-link">
+    下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
+  </span>
+  <el-dropdown-menu slot="dropdown">
+    <el-dropdown-item>个人中心</el-dropdown-item>
+    <el-dropdown-item divided @click="exit">退出登录</el-dropdown-item>
+  </el-dropdown-menu>
+</el-dropdown>
 </template>
 
 <script scoped>
 export default {
     name:'User',
+    methods:{
+      exit(){
+        this.$router.push('/login')
+        console.log('123');
+      }
+    }
 }
 </script>
 
