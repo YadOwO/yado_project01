@@ -1,13 +1,36 @@
-<template>
-  <h1>Person</h1>
-</template>
+  <template>
+    <el-table
+      :data="userList"
+      style="width: 100%">
+      <el-table-column
+        prop="userId"
+        label="学号"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="username"
+        label="姓名"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="rank"
+        label="权限"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="userDorm"
+        label="所属宿舍">
+      </el-table-column>
+    </el-table>
+  </template>
 
-<script>
-export default {
-name:'Person',
-}
-</script>
+  <script>
+  import { mapState } from 'vuex'
 
-<style>
-
-</style>
+    export default {
+      name:'Person',
+      computed:{
+        ...mapState('users',['userList','test'])
+      }
+    }
+  </script>

@@ -15,7 +15,7 @@ Vue.config.productionTip = false
 
 Vue.use(ElementUI);
 
-routerAuth(router)
+routerAuth(router, store)
 
 
 new Vue({

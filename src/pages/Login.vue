@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
     name:'Login',
@@ -21,40 +21,18 @@ export default {
             passWord:'',
         }
     },
-    computed:{
-        ...mapState('users',['userList','test'])
-    },
     methods:{
         loginHandler(){
             if(!this.userName||!this.passWord) {
                 this.$message.error('账号或密码为空！')
                 return
             }
-            // //用户名为'admin',密码为'123'
-            // if(this.userName !== 'admin' || this.passWord !== '123') {
-            //     this.$message.error('账号或密码错误！')
-            //     return
-            // }
-            
-            //查找是否有该用户,未找到userTemp的值为undefined
-            const userTemp = this.userList.find(user=>user.username === this.userName)
-            if(!userTemp){//如果没找到
-                this.$message.error('不存在该用户！')
-                return
-            }else {//如果找到了
-                //验证密码
-                if(userTemp.password !== this.passWord){//如果密码不正确
-                this.$message.error('用户密码错误！')
-                return
-                }
-            }
-            //向浏览器中加入token，用于后面的路由守卫验证登录
-            sessionStorage.setItem('token', userTemp.rank === 'admin' ? 'admin' : 'student')
-            this.$router.replace('/')
-        }
-    },
-    mounted(){
-        // console.log(this.userList.find(user=>user.username === this.userName))
+            this.userLogin({
+                username:this.userName,
+                password:this.passWord,
+            })
+        },
+        ...mapActions('users', ['userLogin']),
     }
 }
 </script>

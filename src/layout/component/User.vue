@@ -1,23 +1,35 @@
 <template>
     <el-dropdown :hide-on-click="false" class="user-box">
   <span class="el-dropdown-link">
-    下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
+    {{currentUser.username || '未登录'}}<i class="el-icon-arrow-down el-icon--right"></i>
   </span>
   <el-dropdown-menu slot="dropdown">
     <el-dropdown-item>个人中心</el-dropdown-item>
-    <el-dropdown-item divided @click="exit">退出登录</el-dropdown-item>
+    <!--组件无click事件,需要.native -->
+    <el-dropdown-item divided @click.native="exitHandler">退出登录</el-dropdown-item>
   </el-dropdown-menu>
 </el-dropdown>
 </template>
 
 <script scoped>
+import { mapActions, mapGetters } from 'vuex'
 export default {
     name:'User',
     methods:{
-      exit(){
-        this.$router.push('/login')
-        console.log('123');
-      }
+      exitHandler() {
+        this.$confirm('您确定要退出吗?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.userExit()
+        }).catch(() => {       
+        });
+      },
+      ...mapActions('users', ['userExit'])
+    },
+    computed:{
+      ...mapGetters(['currentUser'])
     }
 }
 </script>

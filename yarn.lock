@@ -8381,6 +8381,13 @@ vue-loader@^15.7.0:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-persistedstate@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.npmmirror.com/vue-persistedstate/-/vue-persistedstate-1.2.5.tgz#678c3e8bb46f386dd2c84bce788fa75612c7bbd2"
+  integrity sha512-weMmgS06kflxdCTm+7Wax6tjeCHMq6dARLSeMj+HPQVUNGkC+wsDYkLhkWyg8MlcAVyFnoRpFTPNbJN3wXDjcg==
+  dependencies:
+    vue "^2.5.11"
+
 vue-router@3:
   version "3.5.4"
   resolved "https://registry.npmmirror.com/vue-router/-/vue-router-3.5.4.tgz#c453c0b36bc75554de066fefc3f2a9c3212aca70"
@@ -8407,7 +8414,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npmmirror.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.10:
+vue@^2.5.11, vue@^2.6.10:
   version "2.7.8"
   resolved "https://registry.npmmirror.com/vue/-/vue-2.7.8.tgz#34e06553137611d8cecc4b0cd78b7a59f80b1299"
   integrity sha512-ncwlZx5qOcn754bCu5/tS/IWPhXHopfit79cx+uIlLMyt3vCMGcXai5yCG5y+I6cDmEj4ukRYyZail9FTQh7lQ==

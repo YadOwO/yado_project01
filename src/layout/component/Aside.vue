@@ -51,11 +51,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     name:'Aside',
     data() {
       return {
-        isDisabled:'',
       }
     },
     methods: {
@@ -70,9 +70,11 @@ export default {
         if(this.$route.fullpath !== route.path) this.$router.push(route)
       }
     },
-    mounted(){
-      //判断权限
-      this.isDisabled = sessionStorage.getItem('token') === 'student' ? true : false
+    computed: {
+      isDisabled({ token }) {
+        return token === 'student'
+      },
+      ...mapGetters(['token'])
     }
   }
 </script>

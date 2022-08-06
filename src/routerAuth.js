@@ -1,7 +1,9 @@
-export default function routerAuth(router) { 
+
+
+export default function routerAuth(router, store) { 
     router.beforeEach((to, from, next) => {
         // console.log(to)
-        const token = sessionStorage.getItem('token')
+        const { token } = store.getters
         if (token || to.path === '/login') {
             next();
             return
