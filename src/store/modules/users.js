@@ -2,10 +2,11 @@ import { Message } from 'element-ui'
 import router from '@/router'
 
 export default {
-    namespaced: true,
+    namespaced: true,//命名空间开启
     state:{
-        token: '',
-        currentUser: null,
+        token: '',//用于检验用户权限
+        currentUser: null,//设置当前用户
+        //存储的用户信息
         userList:[{
             userId:'001',
             rank:'admin',
@@ -70,9 +71,9 @@ export default {
             userDorm:'333',
         },
     ],
-        test:'test',
     },
     actions: { 
+            //进行账号密码验证
             userLogin({ state, commit }, { username, password}){
             const userTemp = state.userList.find(user=> user.username === username)
             console.log(state)
@@ -81,9 +82,11 @@ export default {
             }else if(userTemp.password !== password){//如果密码不正确
                 Message.error('用户密码错误！')
             }
+            //验证成功后将用户权限(rank)和当前用户传入mutations
             commit('SET_TOKEN',userTemp.rank )
             commit('SET_CURRENT_USER' , userTemp)
             Message.success('登录成功！')
+            //跳转到主界面
             router.replace('/')
         },
         userExit({ commit }) {
@@ -92,9 +95,11 @@ export default {
         }
     },
     mutations: { 
+        //设置当前用户权限
         SET_TOKEN(state, token){
             state.token = token;
         },
+        //设置当前用户
         SET_CURRENT_USER(state, user){
             state.currentUser = user;
         },

@@ -23,15 +23,18 @@ export default {
     },
     methods:{
         loginHandler(){
+            //简单的非空验证
             if(!this.userName||!this.passWord) {
                 this.$message.error('账号或密码为空！')
                 return
             }
+            //讲数据传入
             this.userLogin({
                 username:this.userName,
                 password:this.passWord,
             })
         },
+        //得到vuex中的userLogin方法
         ...mapActions('users', ['userLogin']),
     }
 }
