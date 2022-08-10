@@ -94,7 +94,7 @@
         ...mapState('dormitorys',['dormList']),
       },
       mounted() {
-        console.log(this.dormList)
+        // console.log(this.dormList)
       },
     }
   </script>

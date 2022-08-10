@@ -4,13 +4,21 @@ import VueRouter from 'vue-router'
 import Layout from '../layout'
 import Login from '../pages/Login'
 import Home from '../pages/Home'
-import Dormitory from '../pages/Dormitory'
-import Light from '../pages/Light'
-import Kongtiao from '../pages/Kongtiao'
-import Water from '../pages/Water'
-import FixList from '../pages/FixList'
-import FixSub from '../pages/FixSub'
-import Person from '../pages/Person'
+
+import fix from './modules/fix'
+import lookDorm from './modules/lookDorm'
+import pay from './modules/pay'
+import person from './modules/person'
+
+export const arrRoutes = [{
+	path:'home',
+	name: 'home',
+	component:Home,
+	meta: {
+		title: '首页',
+		icon: 'el-icon-s-home'
+	}
+},].concat(lookDorm,pay,fix,person)
 
 Vue.use(VueRouter)
 
@@ -31,13 +39,6 @@ VueRouter.prototype.replace = function replace(...args) {
 export default new VueRouter({
 	routes:[
 		{
-			path:'/',
-			redirect: '/layout',
-			meta: {
-				title: '首页'
-			}
-		},
-		{
 			path:'/login',
 			component:Login,
 			meta: {
@@ -45,75 +46,10 @@ export default new VueRouter({
 			}
 		},
 		{
-			path:'/layout',
+			path:'/',
 			component: Layout,
-			redirect: '/layout/home',
-			children:[
-				{
-					path:'home',
-					name: 'home',
-					component:Home,
-					meta: {
-						title: '首页'
-					}
-				},
-				{
-					path:'dormitory',
-					name: 'dormitory',
-					component:Dormitory,
-					meta: {
-						title: '宿舍查看'
-					}
-				},
-				{
-					path:'light',
-					name: 'light',
-					component:Light,
-					meta: {
-						title: '照明电费'
-					}
-				},
-				{
-					path:'kongtiao',
-					name: 'kongtiao',
-					component:Kongtiao,
-					meta: {
-						title: '空调电费'
-					}
-				},
-				{
-					path:'water',
-					name: 'water',
-					component:Water,
-					meta: {
-						title: '缴纳水费'
-					}
-				},
-				{
-					path:'fixList',
-					name: 'fixList',
-					component:FixList,
-					meta: {
-						title: '报修列表'
-					}
-				},
-				{
-					path:'fixSub',
-					name: 'fixSub',
-					component:FixSub,
-					meta: {
-						title: '申请报修'
-					}
-				},
-				{
-					path:'person',
-					name: 'person',
-					component:Person,
-					meta: {
-						title: '人员管理'
-					}
-				},
-			]
+			redirect: '/home',
+			children:arrRoutes
 		}
 	]
 })
